@@ -228,7 +228,8 @@ class TestAsyncAzureInstance(IsolatedAsyncioTestCase, AzureMetadata):
     # httpretty)
     async def test_not_identify_metadata(self):
         self.httpretty_no_azure_metadata()
-        real_curl = lib.scylla_cloud.aiocurl
+
+        real_curl = lib.scylla_cloud.curl
 
         async def mocked_curl(*args, **kwargs):
             kwargs["timeout"] = 0.001

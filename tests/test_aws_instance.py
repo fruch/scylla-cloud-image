@@ -233,7 +233,8 @@ class TestAsyncAwsInstance(IsolatedAsyncioTestCase, AwsMetadata):
 
     async def test_not_identify_metadata(self):
         httpretty.disable()
-        real_curl = lib.scylla_cloud.aiocurl
+
+        real_curl = lib.scylla_cloud.curl
 
         async def mocked_curl(*args, **kwargs):
             kwargs["timeout"] = 0.1
